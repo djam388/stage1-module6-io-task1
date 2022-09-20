@@ -6,13 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FileReader {
-    public Profile getDataFromFile(File file) {
+    public Profile getDataFromFile(File file) throws IOException {
         String name = "";
         String email = "";
         int age = 0;
         Long phone = 0L;
 
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
+
             StringBuilder readContent = new StringBuilder();
             int ch;
             while ((ch = fileInputStream.read()) != -1) {
@@ -40,10 +41,6 @@ public class FileReader {
                 }
             }
             return new Profile(name, age, email, phone);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }
