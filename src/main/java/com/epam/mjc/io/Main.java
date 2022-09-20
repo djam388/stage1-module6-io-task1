@@ -1,14 +1,12 @@
 package com.epam.mjc.io;
 
 import java.io.File;
+import java.io.IOException;
 
 
 public class Main {
-    public static void main(String[] args) {
-
-        File fileToRead = new File("./" + "/src/main/resources/Profile.txt");
-
+    public static void main(String[] args) throws IOException {
         FileReader fileReader = new FileReader();
-        fileReader.getDataFromFile(fileToRead);
+        fileReader.getDataFromFile(new File("./" + "/src/main/resources/Profile.txt"));
     }
 }
