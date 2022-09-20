@@ -9,6 +9,6 @@ public class Main {
         File fileToRead = new File("./" + "/src/main/resources/Profile.txt");
 
         FileReader fileReader = new FileReader();
-        System.out.println(fileReader.getDataFromFile(fileToRead));
+        System.err.println(fileReader.getDataFromFile(fileToRead));
     }
 }

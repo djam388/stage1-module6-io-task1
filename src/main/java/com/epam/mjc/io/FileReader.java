@@ -14,15 +14,17 @@ public class FileReader {
         String email = "";
         int age = 0;
         Long phone = 0L;
-        System.out.println(file.toString());
+
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
-            String content = "";
+            StringBuilder readContent = new StringBuilder();
             int ch;
             while ((ch = fileInputStream.read()) != -1) {
-                content += (char)ch;
+
+                readContent.append((char)ch);
             }
 
-            String[] contentLines = content.split("\\r?\\n|\\r");
+
+            String[] contentLines = readContent.toString().split("\\r?\\n|\\r");
 
                 for (int i = 0; i < contentLines.length; i++) {
                 String[] lineValues = contentLines[i].split(": ");
@@ -44,10 +46,10 @@ public class FileReader {
             return new Profile(name, age, email, phone);
         }
         catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            System.err.println("File not found!");
         }
         catch (IOException e) {
-            System.out.println("Something went wrong!");
+            System.err.println("Something went wrong!");
         }
         return null;
     }
