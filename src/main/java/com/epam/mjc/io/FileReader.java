@@ -19,10 +19,9 @@ public class FileReader {
             String content = "";
             int ch;
             while ((ch = fileInputStream.read()) != -1) {
-//                System.out.print((char)ch);
                 content += (char)ch;
             }
-//            System.out.println(content);
+
             String[] contentLines = content.split("\\r?\\n|\\r");
 
                 for (int i = 0; i < contentLines.length; i++) {
