@@ -46,10 +46,10 @@ public class FileReader {
             return new Profile(name, age, email, phone);
         }
         catch (FileNotFoundException e) {
-            System.err.println("File not found!");
+
         }
         catch (IOException e) {
-            System.err.println("Something went wrong!");
+
         }
         return null;
     }
