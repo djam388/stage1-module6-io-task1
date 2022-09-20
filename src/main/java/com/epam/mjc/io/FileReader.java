@@ -5,15 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 public class FileReader {
-    public Profile getDataFromFile(File file) throws IOException {
+
+    public Profile getDataFromFile(File file) {
         String name = "";
         String email = "";
         int age = 0;
         Long phone = 0L;
 
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
-
             StringBuilder readContent = new StringBuilder();
             int ch;
             while ((ch = fileInputStream.read()) != -1) {
@@ -30,17 +31,24 @@ public class FileReader {
                         name = lineValues[1];
                     }
                     else if (lineValues[0].equals("Age")) {
-                        age = Integer.parseInt(lineValues[1]);
+                        age = Integer.valueOf(lineValues[1]);
                     }
                     else if (lineValues[0].equals("Email")) {
                         email = lineValues[1];
                     }
                     else if (lineValues[0].equals("Phone")) {
-                        phone = Long.parseLong(lineValues[1]);
+                        phone = Long.valueOf(lineValues[1]);
                     }
                 }
             }
             return new Profile(name, age, email, phone);
         }
+        catch (FileNotFoundException e) {
+            System.err.println(e);
+        }
+        catch (IOException e) {
+            System.err.println(e);
+        }
+        return null;
     }
 }

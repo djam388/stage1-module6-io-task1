@@ -39,7 +39,7 @@ public class FileReaderTest {
     }
 
     @Test
-    public void testProgramReadsDataCorrectly () throws IOException {
+    public void testProgramReadsDataCorrectly () {
         FileReader fileReader = new FileReader();
         Profile actual = fileReader.getDataFromFile(new File(TEST_FILE.toUri()));
         assertEquals(profile, actual);
@@ -55,7 +55,7 @@ public class FileReaderTest {
     }
 
     @Test
-    public void testCodeHasStreamClosing(){
+    public void testCodeHasStreamClosing() {
         String sourceCode = readFileIntoString(READER_CLASS);
         assertTrue("Code doesn't contain closing or try-with-resources",
                 sourceCode.contains("try (") || sourceCode.contains("try(") || sourceCode.contains(".close()"));
