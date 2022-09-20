@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 
 public class FileReader {
@@ -43,12 +44,10 @@ public class FileReader {
             }
             return new Profile(name, age, email, phone);
         }
-        catch (FileNotFoundException e) {
-            System.err.println(e);
-        }
         catch (IOException e) {
-            System.err.println(e);
+            e.printStackTrace();
         }
+
         return null;
     }
 }
